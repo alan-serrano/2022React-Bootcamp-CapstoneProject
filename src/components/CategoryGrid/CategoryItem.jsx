@@ -1,26 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { GridItem } from '../Grid';
 
-const GridProduct = (props) => {
+const CategoryItem = (props) => {
   const { imgSrc, imgAlt, title, description } = props;
   return (
-    <div className="grid-product">
-      <div className="product-img">
+    <GridItem className="wiz-grid-category">
+      <div className="category-img">
         <img src={imgSrc} alt={imgAlt} />
       </div>
-      <div className="produc-meta">
+      <div className="category-meta">
         <div className="title">{title}</div>
         <div className="description">{description}</div>
       </div>
-    </div>
+    </GridItem>
   );
 };
 
-GridProduct.propTypes = {
+CategoryItem.propTypes = {
   imgSrc: PropTypes.string,
   imgAlt: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
 };
 
-export default GridProduct;
+export default CategoryItem;
