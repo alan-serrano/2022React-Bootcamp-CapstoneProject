@@ -9,12 +9,15 @@ import featuredProducts from '../../mocks/es-mx/featured-products.json';
 const HomePage = () => {
   return (
     <FullLayout>
-      <section className="categories">
-        <CategoryGrid categories={categories.results} />
+      <section className="categories container">
+        <CategoryGrid categories={categories.results} gap={2} />
       </section>
 
-      <section className="featured-products">
-        <FeaturedProductGrid featuredProducts={featuredProducts.results} />
+      <section className="featured-products container">
+        <FeaturedProductGrid
+          featuredProducts={featuredProducts.results}
+          gap={2}
+        />
       </section>
     </FullLayout>
   );
