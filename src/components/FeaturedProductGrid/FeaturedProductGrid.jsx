@@ -1,22 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '../Grid';
+import * as Styled from '../Grid/styles';
 import FeaturedProductItem from './FeaturedProductItem';
 
 /**@type {import('./FeaturedProductGrid.types').FeaturedProductGrid} */
 const FeaturedProductGrid = (props) => {
   const { featuredProducts } = props;
   return (
-    <Grid className="wiz-featured-products-grid">
+    <Styled.Grid className="wiz-featured-products-grid" {...props}>
       {featuredProducts.map((featuredProduct) => (
         <FeaturedProductItem featuredProduct={featuredProduct} />
       ))}
-    </Grid>
+    </Styled.Grid>
   );
-};
-
-FeaturedProductGrid.propTypes = {
-  featuredProducts: PropTypes.array.isRequired,
 };
 
 export default FeaturedProductGrid;

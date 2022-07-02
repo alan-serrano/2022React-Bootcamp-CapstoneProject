@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CategoryItem from './CategoryItem';
+import * as Styled from '../Grid/styles';
 import Grid from '../Grid';
 
 /**@type {import('./CategoryGrid.types').CategoryGrid} */
 const CategoryGrid = (props) => {
   const { categories } = props;
   return (
-    <Grid className="wiz-category-grid">
+    <Styled.Grid className="wiz-category-grid" {...props}>
       {categories.map((category) => (
         <CategoryItem
           key={category.id}
@@ -16,12 +17,8 @@ const CategoryGrid = (props) => {
           imgSrc={category.data.main_image.url}
         />
       ))}
-    </Grid>
+    </Styled.Grid>
   );
-};
-
-CategoryGrid.propTypes = {
-  categories: PropTypes.array.isRequired,
 };
 
 export default CategoryGrid;

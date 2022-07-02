@@ -57,9 +57,17 @@
  * @typedef {[featuredProduct]} featuredProducts
  */
 
+/**@typedef {import('../Grid/Grid.types').props} gridProps */
+
+/**
+ * @typedef {object} props
+ * @property {featuredProducts} featuredProducts
+ * @property {number} gap
+ */
+
 /**
  * @callback FeaturedProductGrid
- * @param {{featuredProducts: featuredProducts}} props
+ * @param {props & gridProps} props
  */
 
 export {};

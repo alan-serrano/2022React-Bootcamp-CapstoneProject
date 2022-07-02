@@ -1,3 +1,5 @@
+/**@typedef {import('../Grid/Grid.types').props} gridProps */
+
 /**
  * @typedef {Object} dimensions
  * @property {string} width
@@ -40,8 +42,14 @@
  */
 
 /**
+ * @typedef {object} props
+ * @property {categories} categories
+ * @property {number} gap
+ */
+
+/**
  * @callback CategoryGrid
- * @param {{categories: categories}} props
+ * @param {props & gridProps} props
  */
 
 export {};

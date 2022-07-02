@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GridItem } from '../Grid';
+import { Styled } from '../Grid';
 
 /**@type {import('./FeaturedProductItem.types').FeaturedProductItem} */
 const FeaturedProductItem = (props) => {
@@ -16,7 +16,7 @@ const FeaturedProductItem = (props) => {
     price,
   } = props.featuredProduct;
   return (
-    <GridItem>
+    <Styled.GridItem>
       <div className="product-img">
         <img src={imgSrc} alt={imgAlt} />
       </div>
@@ -29,7 +29,7 @@ const FeaturedProductItem = (props) => {
           <span>{price}</span>
         </div>
       </div>
-    </GridItem>
+    </Styled.GridItem>
   );
 };
 

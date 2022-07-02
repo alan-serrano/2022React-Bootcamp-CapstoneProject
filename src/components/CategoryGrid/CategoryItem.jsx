@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GridItem } from '../Grid';
+import { Styled } from '../Grid';
 
 const CategoryItem = (props) => {
   const { imgSrc, imgAlt, title, description } = props;
   return (
-    <GridItem className="wiz-grid-category">
+    <Styled.GridItem className="wiz-grid-category">
       <div className="category-img">
         <img src={imgSrc} alt={imgAlt} />
       </div>
@@ -13,7 +13,7 @@ const CategoryItem = (props) => {
         <div className="title">{title}</div>
         <div className="description">{description}</div>
       </div>
-    </GridItem>
+    </Styled.GridItem>
   );
 };
 
