@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const GridItem = (props) => {
-  return <div className="wiz-grid-item">{props.children}</div>;
+  const { className } = props;
+  return <div className={`wiz-grid-item ${className}`}>{props.children}</div>;
 };
 
 GridItem.propTypes = {};
