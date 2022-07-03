@@ -30,4 +30,8 @@ export const Header = styled(HeaderComponent)`
     margin-left: 5px;
     margin-right: 5px;
   }
+
+  & .logo-section {
+    width: 50px;
+  }
 `;
