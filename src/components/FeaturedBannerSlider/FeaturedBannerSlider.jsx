@@ -11,7 +11,7 @@ const FeaturedBannerSlider = (props) => {
         <FeaturedBannerSlide
           description={featuredBanner.data.description[0]}
           image={featuredBanner.data.main_image}
-          key={featuredBanner.uid}
+          key={featuredBanner.id}
           title={featuredBanner.data.title}
         />
       ))}

@@ -5,7 +5,7 @@ import { Slide as SlideStyled } from '../Slider/styles';
 const FeaturedBannerSlide = (props) => {
   const { image, description, key, title } = props;
   return (
-    <SlideStyled key={key} {...props}>
+    <SlideStyled {...props}>
       <h3>{title}</h3>
       <div className="wrapper-img">
         <img src={image.url} alt={image.alt} />
