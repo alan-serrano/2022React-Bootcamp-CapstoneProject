@@ -8,10 +8,12 @@ import categories from '../../mocks/en-us/product-categories.json';
 import featuredProducts from '../../mocks/en-us/featured-products.json';
 import featuredBannerInfo from '../../mocks/en-us/featured-banners.json';
 import { Button as ButtonStyled } from '../../components/Button/styles';
+import PropTypes from 'prop-types';
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const { navigateTo } = props;
   return (
-    <FullLayout>
+    <FullLayout logoAction={() => navigateTo('homePage')}>
       <section className="featured-banners container">
         <h2>Featured Banners</h2>
         <FeaturedBannerSliderStyled
@@ -33,10 +35,16 @@ const HomePage = () => {
           featuredProducts={featuredProducts.results}
           gap={2}
         />
-        <ButtonStyled>View all products</ButtonStyled>
+        <ButtonStyled onClick={() => navigateTo('productListPage')}>
+          View all products
+        </ButtonStyled>
       </section>
     </FullLayout>
   );
+};
+
+HomePage.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
 };
 
 export default HomePage;

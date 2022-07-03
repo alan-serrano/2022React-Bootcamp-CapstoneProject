@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Main({ header = false, footer = false, ...props }) {
-  return <main {...props}>{props.children}</main>;
+function Main({ header = false, footer = false, className, children }) {
+  return <main className={className}>{children}</main>;
 }
 
 Main.propTypes = {

@@ -10,10 +10,10 @@ const Styled = {
 };
 
 function Layout(props) {
-  const { header = false, footer = false } = props;
+  const { header = false, footer = false, logoAction } = props;
   return (
     <>
-      {header && <Styled.Header />}
+      {header && <Styled.Header logoAction={logoAction} />}
       <Styled.Main {...props}>{props.children}</Styled.Main>
       {footer && <Styled.Footer />}
     </>
@@ -23,6 +23,7 @@ function Layout(props) {
 Layout.propTypes = {
   header: PropTypes.bool,
   footer: PropTypes.bool,
+  logoAction: PropTypes.func.isRequired,
 };
 
 export default Layout;

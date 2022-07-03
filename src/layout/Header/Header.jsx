@@ -1,13 +1,21 @@
 import React from 'react';
 import { BiShoppingBag, BiSearch } from 'react-icons/bi';
 import { ReactComponent as WizelineLogo } from '../../img/wizeline_logo3D.svg';
+import PropTypes from 'prop-types';
 
-export default function Header(props) {
+const Header = (props) => {
+  const { logoAction, className } = props;
+  const onLogoClick = (event) => {
+    event.preventDefault();
+    logoAction();
+  };
   return (
-    <header {...props}>
+    <header className={className}>
       <div className="wrapper">
         <div className="logo-section">
-          <WizelineLogo />
+          <a href="#" onClick={onLogoClick}>
+            <WizelineLogo />
+          </a>
         </div>
         <div className="header-actions">
           <div className="shoping-cart-btn">
@@ -20,4 +28,10 @@ export default function Header(props) {
       </div>
     </header>
   );
-}
+};
+
+Header.propTypes = {
+  logoAction: PropTypes.func.isRequired,
+};
+
+export default Header;
