@@ -3,6 +3,7 @@ import FooterComponent from './Footer';
 
 export const minHeightFooter = '85px';
 export const Footer = styled(FooterComponent)`
+  margin-top: 16px;
   min-height: ${minHeightFooter};
   padding-top: 20px;
   padding-bottom: 20px;
