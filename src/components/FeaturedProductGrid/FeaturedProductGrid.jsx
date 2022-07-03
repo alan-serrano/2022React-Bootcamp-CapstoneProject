@@ -9,7 +9,10 @@ const FeaturedProductGrid = (props) => {
   return (
     <Styled.Grid className="wiz-featured-products-grid" {...props}>
       {featuredProducts.map((featuredProduct) => (
-        <FeaturedProductItem featuredProduct={featuredProduct} />
+        <FeaturedProductItem
+          key={featuredProduct.id}
+          featuredProduct={featuredProduct}
+        />
       ))}
     </Styled.Grid>
   );
