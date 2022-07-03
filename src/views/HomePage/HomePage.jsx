@@ -1,5 +1,4 @@
 import React from 'react';
-import CategoryGrid from '../../components/CategoryGrid/CategoryGrid';
 import FeaturedProductGrid from '../../components/FeaturedProductGrid/FeaturedProductGrid';
 import { FeaturedBannerSlider as FeaturedBannerSliderStyled } from '../../components/FeaturedBannerSlider/styles';
 import { CategorySlider as CategorySliderStyled } from '../../components/CategorySlider/styles';
