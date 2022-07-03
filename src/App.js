@@ -5,7 +5,6 @@ import HomePage from './views/HomePage';
 
 function App() {
   const { data, isLoading } = useFeaturedBanners();
-  console.log(data, isLoading);
 
   return (
     <div className="App">

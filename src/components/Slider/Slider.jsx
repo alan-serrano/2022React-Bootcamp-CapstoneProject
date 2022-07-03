@@ -56,10 +56,6 @@ const Slider = (props) => {
     [leftClonedSlides.length],
   );
 
-  useEffect(() => {
-    console.log(slideIndex);
-  }, [slideIndex]);
-
   const nextSlide = () => {
     let nextIndex = slideIndex + 1;
     setSlideIndex(nextIndex);
