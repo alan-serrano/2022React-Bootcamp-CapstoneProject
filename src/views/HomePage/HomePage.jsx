@@ -7,6 +7,7 @@ import { FullLayout } from '../../layout';
 import categories from '../../mocks/en-us/product-categories.json';
 import featuredProducts from '../../mocks/en-us/featured-products.json';
 import featuredBannerInfo from '../../mocks/en-us/featured-banners.json';
+import { Button as ButtonStyled } from '../../components/Button/styles';
 
 const HomePage = () => {
   return (
@@ -32,6 +33,7 @@ const HomePage = () => {
           featuredProducts={featuredProducts.results}
           gap={2}
         />
+        <ButtonStyled>View all products</ButtonStyled>
       </section>
     </FullLayout>
   );
