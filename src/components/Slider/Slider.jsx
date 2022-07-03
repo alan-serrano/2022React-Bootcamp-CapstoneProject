@@ -11,17 +11,8 @@ const Slider = (props) => {
   const [clonedSlides, setClonedSlides] = useState([]);
   const [leftClonedSlides, setLeftClonedSlides] = useState([]);
   const [groupSlides, setGroupSlides] = useState([]);
-  const slidesRef = useRef([]);
   const [slideIndex, setSlideIndex] = useState(0);
   const [ref, { width }] = useMeasure();
-
-  useEffect(() => {
-    console.log('slides', slidesRef);
-  }, [countSlides]);
-
-  useEffect(() => {
-    slidesRef.current = slidesRef.current.slice(0, countSlides);
-  }, [countSlides]);
 
   const [slideWidth, setSlideWidth] = useState(null);
   useEffect(
