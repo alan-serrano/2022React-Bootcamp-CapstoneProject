@@ -15,6 +15,5 @@ export const Slider = styled(SliderComponent)`
 
   & .container-slides {
     display: flex;
-    height: 50px;
   }
 `;
