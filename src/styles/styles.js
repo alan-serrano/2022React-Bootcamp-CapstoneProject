@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .container {
-    max-width: 1500px;
+    max-width: 1170px;
     margin-left: auto;
     margin-right: auto;
   }

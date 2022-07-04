@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import SliderComponent from './Slider';
 
 export const Slider = styled(SliderComponent)`
-  width: 80vw;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
