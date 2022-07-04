@@ -10,35 +10,49 @@ import featuredBannerInfo from '../../mocks/en-us/featured-banners.json';
 import { Button as ButtonStyled } from '../../components/Button/styles';
 import PropTypes from 'prop-types';
 
+import { createBreakpoint } from 'react-use';
+
+const useBreakpoint = createBreakpoint({
+  smartPhone: 320,
+  smartPhonePortrait: 480,
+  tablet: 768,
+  laptop: 980,
+  desktop: 1100,
+  largeDesktop: 1405,
+});
+
 const HomePage = (props) => {
-  const { navigateTo } = props;
+  const { navigateTo, className } = props;
+  const breakpoint = useBreakpoint();
   return (
     <FullLayout logoAction={() => navigateTo('homePage')}>
-      <section className="featured-banners container">
-        <h2>Featured Banners</h2>
-        <FeaturedBannerSliderStyled
-          featuredBanners={featuredBannerInfo.results}
-          slidesToShow={1}
-        />
-      </section>
-      <section className="categories container">
-        <h2>Product Categories Slider</h2>
-        <CategorySliderStyled
-          categories={categories.results}
-          slidesToShow={3}
-        />
-      </section>
+      <div className={className}>
+        <section className="featured-banners container">
+          <h2>Featured Banners</h2>
+          <FeaturedBannerSliderStyled
+            featuredBanners={featuredBannerInfo.results}
+            slidesToShow={1}
+          />
+        </section>
+        <section className="categories container">
+          <h2>Product Categories Slider</h2>
+          <CategorySliderStyled
+            categories={categories.results}
+            slidesToShow={breakpoint !== 'smartPhonePortrait' ? 2 : 3}
+          />
+        </section>
 
-      <section className="featured-products container">
-        <h2>Featured Products Grid</h2>
-        <FeaturedProductGrid
-          featuredProducts={featuredProducts.results}
-          gap={2}
-        />
-        <ButtonStyled onClick={() => navigateTo('productListPage')}>
-          View all products
-        </ButtonStyled>
-      </section>
+        <section className="featured-products container">
+          <h2>Featured Products Grid</h2>
+          <FeaturedProductGrid
+            featuredProducts={featuredProducts.results}
+            gap={2}
+          />
+          <ButtonStyled onClick={() => navigateTo('productListPage')}>
+            View all products
+          </ButtonStyled>
+        </section>
+      </div>
     </FullLayout>
   );
 };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { GlobalStyle } from './styles';
 import { useFeaturedBanners } from './utils/hooks/useFeaturedBanners';
-import HomePage from './views/HomePage';
+import { HomePage } from './views/HomePage/styles';
 import { ProductListPage } from './views/ProductListPage/styles';
 
 function App() {
