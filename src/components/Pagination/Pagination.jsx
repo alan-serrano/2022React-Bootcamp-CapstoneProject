@@ -10,7 +10,9 @@ const Pagination = ({ className, count = 5 }) => {
         </li>
 
         {Array.from({ length: count }).map((value, i) => (
-          <li className="pagination-item">{i + 1}</li>
+          <li className="pagination-item" key={i}>
+            {i + 1}
+          </li>
         ))}
 
         <li className="pagination-item">
