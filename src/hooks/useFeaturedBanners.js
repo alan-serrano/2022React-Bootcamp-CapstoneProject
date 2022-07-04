@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { API_BASE_URL } from '../constants';
+import { API_BASE_URL } from '../utils/constants';
 import { useLatestAPI } from './useLatestAPI';
 
 export function useFeaturedBanners() {
