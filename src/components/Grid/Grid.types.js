@@ -3,6 +3,7 @@
 /**
  * @typedef {object} props
  * @property {number} gap
+ * @property {number | 0} pagination
  */
 
 /**

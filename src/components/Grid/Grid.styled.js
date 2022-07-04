@@ -3,9 +3,11 @@ import GridComponent from './Grid';
 import { GridItem } from './GridItem.styled';
 
 export const Grid = styled(GridComponent)`
-  display: flex;
-  gap: ${setGap};
-  flex-wrap: wrap;
+  & .wiz-grid-items-container {
+    display: flex;
+    gap: ${setGap};
+    flex-wrap: wrap;
+  }
 
   & ${GridItem} {
     width: calc(33% - ${setGap});

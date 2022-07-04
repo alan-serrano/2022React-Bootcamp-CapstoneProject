@@ -17,6 +17,8 @@ const ProductGrid = (props) => {
 
 ProductGrid.propTypes = {
   products: PropTypes.array,
+  gap: PropTypes.number,
+  pagination: PropTypes.bool,
 };
 
 export default ProductGrid;

@@ -44,7 +44,7 @@ const ProductListPage = (props) => {
         />
         <div className="content">
           <h2>Products</h2>
-          <ProductGrid gap={2} products={products} />
+          <ProductGrid gap={2} products={products} pagination={true} />
         </div>
       </div>
     </FullLayout>
