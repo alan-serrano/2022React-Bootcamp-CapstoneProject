@@ -4,13 +4,13 @@ import { ReactComponent as WizelineLogo } from '../../img/wizeline_logo3D.svg';
 import PropTypes from 'prop-types';
 
 const Header = (props) => {
-  const { logoAction, className } = props;
+  const { logoAction, className, id: ref } = props;
   const onLogoClick = (event) => {
     event.preventDefault();
     logoAction();
   };
   return (
-    <header className={className}>
+    <header className={className} ref={ref}>
       <div className="wrapper">
         <div className="logo-section">
           <a href="#" onClick={onLogoClick}>

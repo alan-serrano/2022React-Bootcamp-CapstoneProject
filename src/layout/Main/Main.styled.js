@@ -1,16 +1,21 @@
 import styled from 'styled-components';
-import { minHeightFooter } from '../Footer/Footer.styled';
-import { minHeightHeader } from '../Header/Header.styled';
+import { footerDimensions } from '../Footer/Footer.styled';
 import MainComponent from './Main';
 
 export const Main = styled(MainComponent)`
-  min-height: ${(props) => {
+  overflow: auto;
+  min-height: ${({ header, headerHeight, footer, footerHeight }) => {
     let minHeight = '100vh';
-    if (props.header) {
-      minHeight += ` - ${minHeightHeader}`;
+    if (header) {
+      minHeight += ` - ${headerHeight}px`;
     }
-    if (props.footer) {
-      minHeight += ` - ${minHeightFooter}`;
+    if (footer) {
+      minHeight += ` - ${
+        footerHeight +
+        footerDimensions.marginTop +
+        footerDimensions.paddingBottom +
+        footerDimensions.paddingTop
+      }px`;
     }
     return `calc(${minHeight})`;
   }};

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Styled as HeaderStyled } from './Header';
 import { Styled as FooterStyled } from './Footer';
 import { Styled as MainStyled } from './Main';
+import { useMeasure } from 'react-use';
 const Styled = {
   ...HeaderStyled,
   ...FooterStyled,
@@ -11,11 +12,19 @@ const Styled = {
 
 function Layout(props) {
   const { header = false, footer = false, logoAction } = props;
+  const [headerRef, { height: headerHeight }] = useMeasure();
+  const [footerRef, { height: footerHeight }] = useMeasure();
   return (
     <>
-      {header && <Styled.Header logoAction={logoAction} />}
-      <Styled.Main {...props}>{props.children}</Styled.Main>
-      {footer && <Styled.Footer />}
+      {header && <Styled.Header id={headerRef} logoAction={logoAction} />}
+      <Styled.Main
+        {...props}
+        headerHeight={headerHeight}
+        footerHeight={footerHeight}
+      >
+        {props.children}
+      </Styled.Main>
+      {footer && <Styled.Footer id={footerRef} />}
     </>
   );
 }
