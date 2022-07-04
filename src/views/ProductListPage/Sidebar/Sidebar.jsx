@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CategoryList } from '../CategoryList/CategoryList.styled';
 
-const Sidebar = ({ className, children, categories = [] }) => {
+const Sidebar = ({ className, categories = [] }) => {
   return (
     <aside className={className}>
       <h2>Category</h2>

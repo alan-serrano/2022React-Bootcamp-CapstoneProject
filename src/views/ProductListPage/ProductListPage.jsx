@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { FullLayout } from '../../layout';
 import { Styled } from './Sidebar';
 import categories from '../../mocks/en-us/product-categories.json';
+import products from '../../mocks/en-us/products.json';
+import ProductGrid from '../../components/ProductGrid';
 
 const ProductListPage = (props) => {
   const { navigateTo, className } = props;
@@ -11,7 +13,8 @@ const ProductListPage = (props) => {
       <div className={`${className} container`}>
         <Styled.Sidebar categories={categories.results} />
         <div className="content">
-          <h1>This is the Product List Page</h1>
+          <h2>Products</h2>
+          <ProductGrid gap={2} products={products.results} />
         </div>
       </div>
     </FullLayout>
