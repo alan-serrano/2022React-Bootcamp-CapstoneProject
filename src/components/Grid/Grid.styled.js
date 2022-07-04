@@ -8,7 +8,11 @@ export const Grid = styled(GridComponent)`
   flex-wrap: wrap;
 
   & ${GridItem} {
-    width: calc(33% - ${setGap});
+    width: calc(50% - ${setGap});
+
+    @media (min-width: 479px) {
+      width: calc(33% - ${setGap});
+    }
   }
 
   & img {

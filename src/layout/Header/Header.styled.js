@@ -14,6 +14,8 @@ export const Header = styled(HeaderComponent)`
     margin-right: auto;
     max-width: 1500px;
     width: 100%;
+    padding-left: 5vw;
+    padding-right: 5vw;
     display: flex;
     align-content: center;
     align-items: center;
