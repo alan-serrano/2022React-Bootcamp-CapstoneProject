@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 
 const FullLayout = (props) => {
   return (
-    <Layout header footer logoAction={props.logoAction || (() => {})}>
+    <Layout header footer>
       {props.children}
     </Layout>
   );
 };
 
 FullLayout.propTypes = {
-  logoAction: PropTypes.func.isRequired,
+  header: PropTypes.bool,
+  footer: PropTypes.bool,
 };
 
 export default FullLayout;

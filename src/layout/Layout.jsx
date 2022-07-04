@@ -11,12 +11,12 @@ const Styled = {
 };
 
 function Layout(props) {
-  const { header = false, footer = false, logoAction } = props;
+  const { header = false, footer = false } = props;
   const [headerRef, { height: headerHeight }] = useMeasure();
   const [footerRef, { height: footerHeight }] = useMeasure();
   return (
     <>
-      {header && <Styled.Header id={headerRef} logoAction={logoAction} />}
+      {header && <Styled.Header id={headerRef} />}
       <Styled.Main
         {...props}
         headerHeight={headerHeight}
@@ -32,7 +32,6 @@ function Layout(props) {
 Layout.propTypes = {
   header: PropTypes.bool,
   footer: PropTypes.bool,
-  logoAction: PropTypes.func.isRequired,
 };
 
 export default Layout;

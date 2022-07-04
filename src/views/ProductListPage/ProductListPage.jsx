@@ -8,7 +8,7 @@ import ProductGrid from '../../components/ProductGrid';
 import { types } from '../../types';
 
 const ProductListPage = (props) => {
-  const { navigateTo, className } = props;
+  const { className } = props;
   const [filters, setFilters] = useState([]);
   const [
     /**@type {types.productTypes.products}*/
@@ -35,7 +35,7 @@ const ProductListPage = (props) => {
   );
 
   return (
-    <FullLayout logoAction={() => navigateTo('homePage')}>
+    <FullLayout>
       <div className={`${className} container`}>
         <Styled.Sidebar
           categories={categories.results}
@@ -52,7 +52,7 @@ const ProductListPage = (props) => {
 };
 
 ProductListPage.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default ProductListPage;

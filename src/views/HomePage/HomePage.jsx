@@ -11,6 +11,7 @@ import { Button as ButtonStyled } from '../../components/Button/styles';
 import PropTypes from 'prop-types';
 
 import { createBreakpoint } from 'react-use';
+import ButtonLink from '../../components/ButtonLink';
 
 const useBreakpoint = createBreakpoint({
   smartPhone: 320,
@@ -22,10 +23,10 @@ const useBreakpoint = createBreakpoint({
 });
 
 const HomePage = (props) => {
-  const { navigateTo, className } = props;
+  const { className } = props;
   const breakpoint = useBreakpoint();
   return (
-    <FullLayout logoAction={() => navigateTo('homePage')}>
+    <FullLayout>
       <div className={className}>
         <section className="featured-banners container">
           <h2>Featured Banners</h2>
@@ -48,9 +49,7 @@ const HomePage = (props) => {
             featuredProducts={featuredProducts.results}
             gap={2}
           />
-          <ButtonStyled onClick={() => navigateTo('productListPage')}>
-            View all products
-          </ButtonStyled>
+          <ButtonLink to={'/products'}>View all products</ButtonLink>
         </section>
       </div>
     </FullLayout>
@@ -58,7 +57,7 @@ const HomePage = (props) => {
 };
 
 HomePage.propTypes = {
-  navigateTo: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default HomePage;

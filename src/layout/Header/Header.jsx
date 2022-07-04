@@ -2,20 +2,17 @@ import React from 'react';
 import { BiShoppingBag, BiSearch } from 'react-icons/bi';
 import { ReactComponent as WizelineLogo } from '../../img/wizeline_logo3D.svg';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
-  const { logoAction, className, id: ref } = props;
-  const onLogoClick = (event) => {
-    event.preventDefault();
-    logoAction();
-  };
+  const { className, id: ref } = props;
   return (
     <header className={className} ref={ref}>
       <div className="wrapper">
         <div className="logo-section">
-          <a href="#" onClick={onLogoClick}>
+          <Link to={'/home'}>
             <WizelineLogo />
-          </a>
+          </Link>
         </div>
         <div className="header-actions">
           <div className="shoping-cart-btn">
@@ -31,7 +28,8 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  logoAction: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  id: PropTypes.func,
 };
 
 export default Header;
