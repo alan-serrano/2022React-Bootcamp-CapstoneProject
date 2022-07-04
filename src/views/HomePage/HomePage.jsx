@@ -35,7 +35,7 @@ const HomePage = (props) => {
           <h2>Product Categories Slider</h2>
           <CategorySliderStyled
             categories={categories.results}
-            slidesToShow={breakpoint !== 'smartPhonePortrait' ? 2 : 3}
+            slidesToShow={breakpoint === 'smartPhone' ? 2 : 3}
           />
         </section>
         <section className="featured-products container">
