@@ -4,14 +4,12 @@ import { FeaturedBannerSlider as FeaturedBannerSliderStyled } from '../../compon
 import { CategorySlider as CategorySliderStyled } from '../../components/CategorySlider/styles';
 import { FullLayout } from '../../layout';
 
-import categories from '../../mocks/en-us/product-categories.json';
 import featuredProducts from '../../mocks/en-us/featured-products.json';
-import featuredBannerInfo from '../../mocks/en-us/featured-banners.json';
-import { Button as ButtonStyled } from '../../components/Button/styles';
 import PropTypes from 'prop-types';
 
 import { createBreakpoint } from 'react-use';
 import ButtonLink from '../../components/ButtonLink';
+import { useFeaturedBanners, useProductCategories } from '../../hooks';
 
 const useBreakpoint = createBreakpoint({
   smartPhone: 320,
@@ -24,23 +22,30 @@ const useBreakpoint = createBreakpoint({
 
 const HomePage = (props) => {
   const { className } = props;
+  const { data: bannersResponse, isLoading } = useFeaturedBanners();
+  const [{ results: productCategories }, cateroryIsLoading] =
+    useProductCategories();
   const breakpoint = useBreakpoint();
   return (
     <FullLayout>
       <div className={className}>
         <section className="featured-banners container">
           <h2>Featured Banners</h2>
-          <FeaturedBannerSliderStyled
-            featuredBanners={featuredBannerInfo.results}
-            slidesToShow={1}
-          />
+          {!isLoading && (
+            <FeaturedBannerSliderStyled
+              featuredBanners={bannersResponse.results}
+              slidesToShow={1}
+            />
+          )}
         </section>
         <section className="categories container">
           <h2>Product Categories Slider</h2>
-          <CategorySliderStyled
-            categories={categories.results}
-            slidesToShow={breakpoint === 'smartPhone' ? 2 : 3}
-          />
+          {!cateroryIsLoading && (
+            <CategorySliderStyled
+              categories={productCategories}
+              slidesToShow={breakpoint === 'smartPhone' ? 2 : 3}
+            />
+          )}
         </section>
 
         <section className="featured-products container">

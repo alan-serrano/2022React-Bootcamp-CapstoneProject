@@ -3,7 +3,7 @@ import { Slide as SlideStyled } from '../Slider/styles';
 
 /**@param {import('./FeaturedBannerSlide.types').FeaturedBannerSlideProps} props*/
 const FeaturedBannerSlide = (props) => {
-  const { image, description, key, title } = props;
+  const { image, description, title } = props;
   return (
     <SlideStyled {...props}>
       <h3>{title}</h3>
