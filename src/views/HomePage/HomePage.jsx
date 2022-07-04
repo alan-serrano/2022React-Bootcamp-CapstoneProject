@@ -7,9 +7,20 @@ import { FullLayout } from '../../layout';
 import categories from '../../mocks/en-us/product-categories.json';
 import featuredProducts from '../../mocks/en-us/featured-products.json';
 import featuredBannerInfo from '../../mocks/en-us/featured-banners.json';
+import { createBreakpoint } from 'react-use';
+
+const useBreakpoint = createBreakpoint({
+  smartPhone: 320,
+  smartPhonePortrait: 480,
+  tablet: 768,
+  laptop: 980,
+  desktop: 1100,
+  largeDesktop: 1405,
+});
 
 const HomePage = (props) => {
   const { className } = props;
+  const breakpoint = useBreakpoint();
   return (
     <FullLayout>
       <div className={className}>
@@ -24,7 +35,7 @@ const HomePage = (props) => {
           <h2>Product Categories Slider</h2>
           <CategorySliderStyled
             categories={categories.results}
-            slidesToShow={3}
+            slidesToShow={breakpoint !== 'smartPhonePortrait' ? 2 : 3}
           />
         </section>
         <section className="featured-products container">
