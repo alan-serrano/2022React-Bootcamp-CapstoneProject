@@ -72,7 +72,7 @@ const Slider = (props) => {
     }
   };
 
-  useEffect(getSlides, []);
+  useEffect(getSlides, [slideWidth, clonedSlides.length]);
 
   function getSlides() {
     const childrens = Children.toArray(children);
