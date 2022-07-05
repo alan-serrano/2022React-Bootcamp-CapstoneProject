@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from './views/HomePage/HomePage.styled';
 import { ProductListPage } from './views/ProductListPage/styles';
+import { ProductDetailPage } from './views/ProductDetailPage/styles';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
           <Route index element={<HomePage />} />
           <Route path="home" element={<HomePage />} />
           <Route path="products" element={<ProductListPage />} />
+          <Route path="products/:productId" element={<ProductDetailPage />} />
         </Route>
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
