@@ -6,12 +6,15 @@ import { Styled } from './Sidebar';
 import ProductGrid from '../../components/ProductGrid';
 import { types } from '../../types';
 import { useProductCategories, useProducts } from '../../hooks';
+import { useSearchParams } from 'react-router-dom';
 
 const ProductListPage = (props) => {
   const { className } = props;
   const [{ results: productCategories }, categoriesAreLoading] =
     useProductCategories();
   const [productsResponse, productsAreLoading] = useProducts();
+  let [searchParams, setSearchParams] = useSearchParams();
+  let categoryFilter = searchParams.get('category');
   const [filters, setFilters] = useState([]);
   const [
     /**@type {types.productTypes.products}*/
@@ -20,13 +23,29 @@ const ProductListPage = (props) => {
   ] = useState(productsResponse.results || []);
 
   useEffect(
+    function initialCategoryFilter() {
+      if (categoryFilter) {
+        setFilters((filters) => {
+          filters = [...filters, categoryFilter.toLowerCase()];
+          return filters;
+        });
+      }
+    },
+    [categoryFilter],
+  );
+
+  useEffect(
     function filterProducts() {
       if (productsAreLoading) return;
+      if (categoryFilter && !filters.includes(categoryFilter.toLowerCase)) {
+        searchParams.delete('category');
+        setSearchParams(searchParams);
+      }
       setProducts((products) => {
         if (filters.length > 0) {
           products = productsResponse.results.filter((product) => {
             let category = product.data.category;
-            return filters.includes(category.id);
+            return filters.includes(category.slug);
           });
         } else {
           products = productsResponse.results;
@@ -35,7 +54,7 @@ const ProductListPage = (props) => {
         return products;
       });
     },
-    [filters, productsAreLoading],
+    [filters, productsAreLoading, categoryFilter],
   );
 
   return (
@@ -50,7 +69,9 @@ const ProductListPage = (props) => {
         )}
         <div className="content">
           <h2>Products</h2>
-          <ProductGrid gap={2} products={products} pagination={true} />
+          {!productsAreLoading && products.length > 0 && (
+            <ProductGrid gap={2} products={products} pagination={true} />
+          )}
         </div>
       </div>
     </FullLayout>

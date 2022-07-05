@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Slide as SlideStyled } from '../Slider/styles';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../Button/Button.styled';
 
 const CategorySlide = (props) => {
   const { imgSrc, imgAlt, title, description } = props;
+  const navigate = useNavigate();
+  const goToProducts = (category) =>
+    navigate({
+      pathname: '/products',
+      search: `?category=${category}`,
+    });
   return (
     <SlideStyled {...props}>
       <div className="category-img">
@@ -12,6 +20,7 @@ const CategorySlide = (props) => {
       <div className="category-meta">
         <div className="title">{title}</div>
         <div className="description">{description}</div>
+        <Button onClick={() => goToProducts(title)}> View Products</Button>
       </div>
     </SlideStyled>
   );
