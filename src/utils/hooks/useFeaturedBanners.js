@@ -22,11 +22,11 @@ export function useFeaturedBanners() {
 
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
-            '[[at(document.type, "banner")]]'
+            '[[at(document.type, "banner")]]',
           )}&lang=en-us&pageSize=5`,
           {
             signal: controller.signal,
-          }
+          },
         );
         const data = await response.json();
 

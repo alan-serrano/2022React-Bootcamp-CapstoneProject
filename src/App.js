@@ -1,27 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { GlobalStyle } from './styles';
 import { useFeaturedBanners } from './utils/hooks/useFeaturedBanners';
+import { HomePage } from './views/HomePage/styles';
+import { ProductListPage } from './views/ProductListPage/styles';
 
 function App() {
   const { data, isLoading } = useFeaturedBanners();
-  console.log(data, isLoading);
+  const [activePage, setActivePage] = useState({
+    homePage: true,
+    productListPage: false,
+  });
+
+  const navigateTo = (page) => {
+    setActivePage((activePage) => {
+      activePage = { ...activePage };
+      for (const page in activePage) {
+        activePage[page] = false;
+      }
+      activePage[page] = true;
+      return activePage;
+    });
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      {activePage.homePage && <HomePage navigateTo={navigateTo} />}
+      {activePage.productListPage && (
+        <ProductListPage navigateTo={navigateTo} />
+      )}
     </div>
   );
 }
