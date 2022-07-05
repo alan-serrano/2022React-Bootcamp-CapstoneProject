@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FullLayout } from '../../layout';
 import { Styled } from './Sidebar';
-import categories from '../../mocks/en-us/product-categories.json';
+
 import productsJSON from '../../mocks/en-us/products.json';
 import ProductGrid from '../../components/ProductGrid';
 import { types } from '../../types';
+import { useProductCategories } from '../../hooks';
 
 const ProductListPage = (props) => {
   const { className } = props;
+  const [{ results: productCategories }, categoriesAreLoading] =
+    useProductCategories();
   const [filters, setFilters] = useState([]);
   const [
     /**@type {types.productTypes.products}*/
@@ -37,11 +40,13 @@ const ProductListPage = (props) => {
   return (
     <FullLayout>
       <div className={`${className} container`}>
-        <Styled.Sidebar
-          categories={categories.results}
-          setFilters={setFilters}
-          filters={filters}
-        />
+        {!categoriesAreLoading && (
+          <Styled.Sidebar
+            categories={productCategories}
+            setFilters={setFilters}
+            filters={filters}
+          />
+        )}
         <div className="content">
           <h2>Products</h2>
           <ProductGrid gap={2} products={products} pagination={true} />
