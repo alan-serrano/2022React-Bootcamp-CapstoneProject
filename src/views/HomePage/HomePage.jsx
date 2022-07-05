@@ -4,12 +4,15 @@ import { FeaturedBannerSlider as FeaturedBannerSliderStyled } from '../../compon
 import { CategorySlider as CategorySliderStyled } from '../../components/CategorySlider/styles';
 import { FullLayout } from '../../layout';
 
-import featuredProducts from '../../mocks/en-us/featured-products.json';
 import PropTypes from 'prop-types';
 
 import { createBreakpoint } from 'react-use';
 import ButtonLink from '../../components/ButtonLink';
-import { useFeaturedBanners, useProductCategories } from '../../hooks';
+import {
+  useFeaturedBanners,
+  useFeaturedProducts,
+  useProductCategories,
+} from '../../hooks';
 
 const useBreakpoint = createBreakpoint({
   smartPhone: 320,
@@ -25,6 +28,8 @@ const HomePage = (props) => {
   const { data: bannersResponse, isLoading } = useFeaturedBanners();
   const [{ results: productCategories }, cateroryIsLoading] =
     useProductCategories();
+  const [{ results: featuredProducts }, featuredProductsAreLoading] =
+    useFeaturedProducts();
   const breakpoint = useBreakpoint();
   return (
     <FullLayout>
@@ -50,10 +55,9 @@ const HomePage = (props) => {
 
         <section className="featured-products container">
           <h2>Featured Products Grid</h2>
-          <FeaturedProductGrid
-            featuredProducts={featuredProducts.results}
-            gap={2}
-          />
+          {!featuredProductsAreLoading && (
+            <FeaturedProductGrid featuredProducts={featuredProducts} gap={2} />
+          )}
           <ButtonLink to={'/products'}>View all products</ButtonLink>
         </section>
       </div>
