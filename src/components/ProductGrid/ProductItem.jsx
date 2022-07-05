@@ -7,7 +7,7 @@ import { ButtonLink } from '../ButtonLink/ButtonLink.styled';
 /**@param {import('./ProductItem.types').ProductItemProps} props */
 const ProductItem = (props) => {
   const { product } = props;
-  const { data } = product;
+  const { data, id: productId } = product;
   const { mainimage, short_description, name, category, price } = data;
 
   return (
@@ -15,7 +15,7 @@ const ProductItem = (props) => {
       <div className="product-img">
         <img src={mainimage.url} alt={mainimage.alt} />
       </div>
-      <div className="product-meta">
+      <div className="product-meta" data-product-id={productId}>
         <div
           className="name"
           style={{ fontWeight: 'bold', marginBottom: '0.5em' }}
