@@ -21,6 +21,12 @@
  */
 
 /**
+ * @typedef {Object} spec
+ * @property {string} spec_name
+ * @property {string} spec_value
+ */
+
+/**
  * @typedef {object} category
  *@property {string} id "YWHviRIAACsAyjP3",
  *@property {"category"} type "category",
@@ -39,7 +45,8 @@
  * @property {string} sku
  * @property {category} category
  * @property {string} short_description
- * @property {dataDescription} description
+ * @property {[dataDescription]} description
+ * @property {[spec]} specs
  * @property {image} mainimage
  * @property {[{image: image}]} images
  * @property {number} stock
