@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
 
 // import Swiper core and required modules
 import SwiperCore, { FreeMode, Thumbs } from 'swiper';
+import { CartButton } from '../../components/Button/Button.styled';
 
 // install Swiper modules
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
@@ -89,38 +90,71 @@ const ProductDetailPage = (props) => {
       </>
     );
   };
+
+  const productTags = () => {
+    return product?.tags?.map((tag, i, tags) => {
+      if (i != tags.length - 1) {
+        tag = tag + ', ';
+      }
+      return <span className="tag">{tag}</span>;
+    });
+  };
+
+  const productSpecs = () => {
+    let specsList = product?.data?.specs.map((spec) => {
+      return (
+        <li key={spec.spec_name}>
+          <span className="spec-name">{spec.spec_name}: </span>
+          <span className="spec-value">{spec.spec_value}</span>
+        </li>
+      );
+    });
+
+    return <ul className="spec-wrapper">{specsList}</ul>;
+  };
+
   return (
     <FullLayout>
       <div className={`${className} container`}>
         <div className="summary">
           <div className="gallery">{productImages()}</div>
           <div className="entry-summary">
-            <div>
-              <span>{product.data?.name}</span>
-            </div>
-            <div>
-              <span>{product.data?.price}$us</span>
-            </div>
-            <div>
-              <span>{product.data?.sku}</span>
-            </div>
-            <div>
+            <div className="category-top">
               <span>{product.data?.category.slug}</span>
             </div>
-            <div>
-              {product?.tags?.map((tag) => (
-                <span>{tag}</span>
-              ))}
+            <h1 className="product_title">{product.data?.name}</h1>
+            <div className="wiz-product-price">
+              <span>{product.data?.price}$us</span>
             </div>
-            <div>
+            <div className="wiz-product-description">
               <span>{product.data?.short_description}</span>
             </div>
-            <div className="somethin">
-              <span>Select items</span>
+            <div className="cart-product">
+              <CartButton>Add to Cart</CartButton>
+              <input
+                type="number"
+                style={{ width: '35px', height: '45px' }}
+                name=""
+                id=""
+                value={0}
+              />
             </div>
-            <div className="somethin">Cart Button.</div>
-            <div className="somethin">specs</div>
+            <div className="wiz-product-meta">
+              <div className="sku-wrapper">
+                <span className="label">SKU: </span>
+                <span className="sku">{product.data?.sku}</span>
+              </div>
+              <div className="tags-wrapper">
+                <span className="label">Tags: </span>
+                {productTags()}
+              </div>
+            </div>
           </div>
+        </div>
+        <div className="wiz-detail-description">
+          <h4>Detailed description</h4>
+          <p>{product?.data?.description[0]?.text}</p>
+          <div className="wiz-product-specs">{productSpecs()}</div>
         </div>
       </div>
     </FullLayout>

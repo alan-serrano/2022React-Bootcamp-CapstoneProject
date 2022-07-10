@@ -6,6 +6,7 @@ import 'swiper/swiper.scss'; // core Swiper
 import 'swiper/modules/navigation/navigation.scss'; // Navigation module
 import 'swiper/modules/pagination/pagination.scss'; // Pagination module
 import 'swiper/modules/thumbs/thumbs.scss'; // Pagination module
+import { responsive } from '../../styles/mixins';
 
 const swipperStyles = css`
   .swiper {
@@ -52,9 +53,15 @@ const swipperStyles = css`
     background-position: center;
   }
 
-  .mySwiper2 {
+  .mySwiper2.mySwiper2 {
     height: 80%;
     width: 100%;
+    img {
+      object-fit: contain;
+      ${responsive.tablet.extend`
+        object-fit: cover;
+      `}
+    }
   }
 
   .mySwiper {
@@ -85,25 +92,97 @@ export const ProductDetailPage = styled(ProductDetailPageComponent)`
   padding-left: 5vw;
   padding-right: 5vw;
   padding-top: 36px;
+  line-height: 1.5;
+  text-align: left;
 
   ${swipperStyles}
 
-  & .summary {
+  .summary {
     display: grid;
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 100%;
+
+    ${responsive.tablet.extend`
+      grid-template-columns: 45% 55%;
+    `}
   }
 
-  & .entry-summary {
-    padding-left: 90px;
-  }
+  .gallery {
+    max-height: 450px;
+    ${responsive.tablet.extend`
+      max-height: none;
+    `}
 
-  & .gallery {
-    & .swiper:first-child {
+    .swiper:first-child {
       box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
     }
   }
 
-  & .product_title {
+  .entry-summary {
+    ${responsive.tablet.extend`
+      padding-left: 90px;
+    `}
+    text-align: left;
+  }
+
+  .product_title {
     font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 13px;
+    font-family: 'Jost';
+    font-weight: 500;
+  }
+
+  .category-top {
+    color: #767676;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+  }
+
+  .wiz-product-price {
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .wiz-product-description {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #767676;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 15px;
+  }
+
+  .wiz-product-meta {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .sku-wrapper {
+    .sku {
+      color: #767676;
+    }
+  }
+
+  .tag {
+    color: #767676;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  .wiz-detail-description {
+    p {
+      color: #767676;
+    }
+  }
+
+  ul.spec-wrapper {
+    padding-left: 0;
+    list-style: none;
+
+    .spec-value {
+      color: #767676;
+    }
   }
 `;
