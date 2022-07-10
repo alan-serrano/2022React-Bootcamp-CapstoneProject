@@ -3,7 +3,6 @@ import { footerDimensions } from '../Footer/Footer.styled';
 import MainComponent from './Main';
 
 export const Main = styled(MainComponent)`
-  overflow: auto;
   min-height: ${({ header, headerHeight, footer, footerHeight }) => {
     let minHeight = '100vh';
     if (header) {

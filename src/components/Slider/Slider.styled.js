@@ -7,6 +7,7 @@ export const Slider = styled(SliderComponent)`
 
   & .content {
     overflow-x: hidden;
+    overflow-y: hidden;
     width: 100%;
   }
 
